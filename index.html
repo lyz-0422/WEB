@@ -2,27 +2,42 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <title>我的網頁範例</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    
+    <style>
+        h1 {
+            color: blue;
+            font-size: 24px;
+        }
+    </style>
 </head>
 <body>
-    <div id="app">
+
+    <div class="section link-group">
+        <h1>歡迎來到我的網站</h1>
+        <p>這是一個 HTML 教學範例。</p>
+        <a href="https://www.google.com">前往 Google</a>
+        <button id="btn">點我</button>
+    </div>
+
+    <div id="app" class="section">
         <h1>{{ message }}</h1>
         <button @click="changeMessage">點我改變訊息</button>
     </div>
 
     <script>
-        const { createApp } = Vue;
+        document.getElementById("btn").addEventListener("click", function() {
+            alert("按鈕被點擊！");
+        });
 
+        const { createApp } = Vue;
         createApp({
             data() {
-                return {
-                    message: "Hello Vue!"
-                };
+                return { message: "Hello Vue!" };
             },
             methods: {
-                changeMessage() {
-                    this.message = "訊息已改變！";
-                }
+                changeMessage() { this.message = "訊息已改變！"; }
             }
         }).mount("#app");
     </script>
